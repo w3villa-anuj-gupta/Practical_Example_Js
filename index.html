@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Topics Demo</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .card {
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .output {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #f1f3f5;
+      border-radius: 0.5rem;
+      min-height: 40px;
+      border: 1px solid #dee2e6;
+      font-family: monospace;
+    }
+
+    .navbar {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">JS Topics</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#intro">Intro</a></li>
+          <li class="nav-item"><a class="nav-link" href="#variables">Variables</a></li>
+          <li class="nav-item"><a class="nav-link" href="#typing">Typing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#operators">Operators</a></li>
+          <li class="nav-item"><a class="nav-link" href="#control">Control</a></li>
+          <li class="nav-item"><a class="nav-link" href="#functions">Functions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#arrays">Arrays</a></li>
+          <li class="nav-item"><a class="nav-link" href="#strings">Strings</a></li>
+          <li class="nav-item"><a class="nav-link" href="#objects">Objects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#errors">Errors</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- 1. Introduction -->
+    <div id="intro" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">1. Introduction to JavaScript</h2>
+        <div class="row g-2">
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-primary w-100" onclick="alert('Welcome to JavaScript!')">Show Alert</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-secondary w-100" onclick="logIntro()">Log Message</button>
+          </div>
+        </div>
+        <div class="output" id="introOut"></div>
+      </div>
+    </div>
+
+    <!-- 2. Variables -->
+    <div id="variables" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">2. Variables & Data Types</h2>
+        <button class="btn btn-primary" onclick="showTypes()">Show Type</button>
+        <div class="output" id="varOut"></div>
+      </div>
+    </div>
+
+    <!-- 3. Dynamic Typing -->
+    <div id="typing" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">3. Dynamic Typing & Type Conversion</h2>
+        <button class="btn btn-primary" onclick="conversion('implicit')">Implicit Conversion </button>
+        <button class="btn btn-primary" onclick="conversion('explicit')">Explicit Conversion</button>
+        <div class="output" id="typeOut"></div>
+      </div>
+    </div>
+
+    <!-- 4. Operators -->
+    <div id="operators" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">4. Operators</h2>
+        <div class="row g-2">
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-primary w-100" onclick="performOperations()">Run Operators</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-success w-100" onclick="ageEligibility()">Age Eligibility</button>
+          </div>
+        </div>
+        <div class="output" id="opOut"></div>
+      </div>
+    </div>
+
+    <!-- 5. Control Structures -->
+    <div id="control" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">5. Control Structures</h2>
+        <div class="row g-2">
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-primary w-100" onclick="checkNumber()">Check Number</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-secondary w-100" onclick="loopUpTo()">Loop Up to</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-warning text-dark w-100" onclick="weekNumber()">Week Number</button>
+          </div>
+        </div>
+        <div class="output" id="controlOut"></div>
+      </div>
+    </div>
+
+    <!-- 6. Functions -->
+    <div id="functions" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">6. Functions</h2>
+        <button class="btn btn-primary" onclick="closureDemo()">Closure (Click Counter)</button>
+        <div class="output" id="funcOut"></div>
+      </div>
+    </div>
+
+    <!-- 7. Arrays -->
+    <div id="arrays" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">7. Arrays</h2>
+        <h3 class="h6 mb-2">Array methods</h3>
+        <div class="row g-2">
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-primary w-100" onclick="arrayMethod('map')">Multiply by 2</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-secondary w-100" onclick="arrayMethod('filter')">Even Numbers</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-success w-100" onclick="arrayMethod('reduce')">Sum of Elements</button>
+          </div>
+        </div>
+        <div class="output" id="arrOut"></div>
+      </div>
+    </div>
+
+    <!-- 8. Strings -->
+    <div id="strings" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">8. String Manipulation</h2>
+        <div class="row g-2">
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-primary w-100" onclick="wordReplace('single')">Single Word Replace</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-secondary w-100" onclick="wordReplace('all')">All Word Replace</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-success w-100" onclick="greeting()">Greeting</button>
+          </div>
+        </div>
+        <div class="output" id="strOut"></div>
+      </div>
+    </div>
+
+    <!-- 9. Objects -->
+    <div id="objects" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">9. Object Manipulation</h2>
+        <div class="row g-2">
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-primary w-100" onclick="objectDisplay()">Object Display</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-secondary w-100" onclick="objectAddProperty()">Add Property</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-danger w-100" onclick="deleteProperty()">Delete Property</button>
+          </div>
+          <div class="col-12 col-md-auto">
+            <button class="btn btn-warning text-dark w-100" onclick="updateProperty()">Update Value</button>
+          </div>
+        </div>
+        <div class="output" id="objOut"></div>
+      </div>
+    </div>
+
+    <!-- 10. Error Handling -->
+    <div id="errors" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">10. Error Handling</h2>
+        <button class="btn btn-danger" onclick="errorDemo()">Number Error</button>
+        <div class="output" id="errOut"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
