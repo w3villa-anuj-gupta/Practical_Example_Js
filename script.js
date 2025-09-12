@@ -15,6 +15,7 @@ const errOut = document.getElementById("errOut");
 let student = { name: "John", age: 20 };
 
 // Function Return the Type 
+
 function givesType(userInput) {
     let result = "";
     // Check data type
