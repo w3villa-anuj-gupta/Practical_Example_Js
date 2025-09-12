@@ -286,7 +286,7 @@ function numberError(inputNumber) {
 }
 
 function errorDemo() {
-    let num = prompt("Enter the Value ");
+    let num = prompt("Enter the Value ","web");
     let result = "";
     try {
         result = numberError(num);
