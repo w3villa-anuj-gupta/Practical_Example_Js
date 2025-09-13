@@ -10,9 +10,25 @@ const strOut = document.getElementById("strOut");
 const objOut = document.getElementById("objOut");
 const errOut = document.getElementById("errOut");
 
+// Use in the Document Object Model 
+
+const choices = ["Rock", "Paper", "Scissors"];
+
+const score = JSON.parse(localStorage.getItem("message")) || {
+    win_count: 0,
+    loss_count: 0,
+    total_games: 0,
+    win_percent: 0
+};
+
 //  Use in the Object Manipulation 
 
 let student = { name: "John", age: 20 };
+
+// Use in API
+
+const URL = "https://dog.ceo/api/breeds/image/random";
+
 
 // Function Return the Type 
 
@@ -52,10 +68,10 @@ function showTypes() {
 
 // 3. Dynamic Typing
 
-function conversion(arg){
+function conversion(arg) {
     // Take the Input from the User
-    let firstNumber = prompt("Enter the First Number ",12);
-    let secondNumber = prompt("Enter the Second Number ",10);
+    let firstNumber = prompt("Enter the First Number ", 12);
+    let secondNumber = prompt("Enter the Second Number ", 10);
     let result = "";
 
     if (arg === 'implicit') {
@@ -71,9 +87,9 @@ function conversion(arg){
 
 function performOperations() {
     // Take input from user
-    let firstNumber = prompt("Enter the First Number ",2);
-    let secondNumber = prompt("Enter the Second Number ",4);
-    let operator = prompt("Enter the Operator ","*");
+    let firstNumber = prompt("Enter the First Number ", 2);
+    let secondNumber = prompt("Enter the Second Number ", 4);
+    let operator = prompt("Enter the Operator ", "*");
 
     let result = eval(`${firstNumber} ${operator}  ${secondNumber}`);
     opOut.innerText = `${firstNumber} ${operator}  ${secondNumber} = ${result}`;
@@ -81,7 +97,7 @@ function performOperations() {
 
 function ageEligibility() {
     // Take input from user
-    let age = prompt("Enter the Age (Vote)",23);
+    let age = prompt("Enter the Age (Vote)", 23);
     let result = "";
 
     if (age === null) {
@@ -97,7 +113,7 @@ function ageEligibility() {
 
 // 5. Control Structures
 function checkNumber() {
-    let num = prompt("Enter the Number (Positive, Negative, Zero)",-12);
+    let num = prompt("Enter the Number (Positive, Negative, Zero)", -12);
     let result = "";
 
     if (num === null) {
@@ -109,7 +125,7 @@ function checkNumber() {
     controlOut.innerText = `${num} , ${result}`;
 }
 function loopUpTo() {
-    let num = prompt("Enter the Number ",10);
+    let num = prompt("Enter the Number ", 10);
     let result = "";
 
     if (num === null) {
@@ -122,7 +138,7 @@ function loopUpTo() {
 }
 
 function weekNumber() {
-    let num = prompt("Enter the week number ",5);
+    let num = prompt("Enter the week number ", 5);
     let result = "";
 
     if (num === null) {
@@ -287,7 +303,7 @@ function numberError(inputNumber) {
 }
 
 function errorDemo() {
-    let num = prompt("Enter the Value ",'12.5');
+    let num = prompt("Enter the Value ", '12.5');
     let result = "";
     try {
         result = numberError(num);
@@ -296,4 +312,173 @@ function errorDemo() {
     } finally {
         errOut.innerText = result;
     }
+}
+
+
+// 11. Document object Model 
+
+//  Events
+
+function mOver(obj) {
+  obj.innerHTML = "Thank You";
+  obj.classList.add('bg-danger');
+}
+
+function mOut(obj) {
+  obj.innerHTML = "Mouse Over Me";
+  obj.classList.remove('bg-danger');
+}
+
+function mDown(obj) {
+  obj.style.backgroundColor = "#1ec5e5";
+  obj.innerHTML = "Release Me";
+}
+
+function mUp(obj) {
+  obj.style.backgroundColor="#D94A38";
+  obj.innerHTML="Thank You";
+}
+
+// Game Rock Paper Scissors
+
+// 🎮 Game buttons
+
+document.querySelectorAll("#rock, #paper, #scissors").forEach((button) => {
+    button.addEventListener("click", () => {
+        const userChoice = button.textContent;
+        const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        let result = "";
+
+        if (userChoice === computerChoice) {
+            result = "It's a tie!";
+        } else if (
+            (userChoice === "Rock" && computerChoice === "Scissors") ||
+            (userChoice === "Paper" && computerChoice === "Rock") ||
+            (userChoice === "Scissors" && computerChoice === "Paper")
+        ) {
+            result = "🎉 You win!";
+            score.win_count += 1;
+        } else {
+            result = "😢 You lose!";
+            score.loss_count += 1;
+        }
+
+        score.total_games += 1;
+        score.win_percent = (score.win_count / score.total_games) * 100;
+
+        localStorage.setItem("message", JSON.stringify(score));
+
+        alert(`👉 You chose: ${userChoice}
+        🤖 Computer chose: ${computerChoice}
+        📊 ${result}
+        Total Games: ${score.total_games}   
+        Wins Count: ${score.win_count}
+        Losses Count: ${score.loss_count}               
+        Win Percentage: ${score.win_percent.toFixed(2)}%`);
+    });
+});
+
+// 🔄 Reset button
+
+document.getElementById("reset-score").addEventListener("click", () => {
+    score.win_count = 0;
+    score.loss_count = 0;
+    score.total_games = 0;
+    score.win_percent = 0;
+
+    localStorage.setItem("message", JSON.stringify(score));
+
+    alert(`✅ Score Reset!
+    Wins: ${score.win_count}
+    Losses: ${score.loss_count}
+    Total Games: ${score.total_games}
+    Win Percentage: ${score.win_percent.toFixed(2)}%`);
+});
+
+
+// 12 . API 
+
+// Generate the Random Dog Image 
+
+const getData = async () => {
+  const img = document.getElementById("dogImage");
+  const loader = document.getElementById("loader");
+  const errOut = document.getElementById("errOut");
+
+  try {
+    // Reset UI
+    loader.classList.remove("d-none");
+    img.classList.add("d-none");
+    errOut.innerText = "";
+
+    // Fetch
+    let response = await fetch(URL);
+    let data = await response.json();
+
+    // Show image
+    img.src = data.message;
+    img.classList.remove("d-none");
+  } catch (error) {
+    errOut.innerText = "⚠️ Failed to load dog image. Try again!";
+  } finally {
+    loader.classList.add("d-none");
+  }
+};
+
+// Weather App 
+
+async function getWeather() {
+  let city = document.getElementById("cityInput").value;
+  let weatherDiv = document.getElementById("weather");
+  let loader = document.getElementById("weatherLoader");
+
+  if (!city) {
+    weatherDiv.innerHTML = `<span class="text-danger">⚠️ Please enter a city name</span>`;
+    return;
+  }
+
+  try {
+    loader.classList.remove("d-none");
+    weatherDiv.innerHTML = "";
+
+    // Geocoding API
+    let geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`);
+    let geoData = await geoRes.json();
+
+    if (!geoData.results || geoData.results.length === 0) {
+      weatherDiv.innerHTML = `<span class="text-danger">❌ City not found</span>`;
+      return;
+    }
+
+    let { latitude, longitude, name, country } = geoData.results[0];
+
+    // Weather API
+    let res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+    let data = await res.json();
+    let weather = data.current_weather;
+
+    // Weather icons
+    const weatherIcons = {
+      0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+      45: '🌫️', 48: '🌫️', 51: '🌦️', 53: '🌦️', 55: '🌦️',
+      61: '🌧️', 63: '🌧️', 65: '🌧️', 71: '❄️', 73: '❄️', 75: '❄️',
+      80: '🌦️', 81: '🌧️', 82: '🌧️', 95: '⛈️', 96: '⛈️', 99: '⛈️'
+    };
+
+    let icon = weatherIcons[weather.weathercode] || '';
+
+    weatherDiv.innerHTML = `
+      <div class="border rounded p-3 shadow-sm bg-light">
+        <h5 class="mb-2">📍 ${name}, ${country}</h5>
+        <p class="mb-1">${icon} <strong>${weather.temperature}°C</strong></p>
+        <p class="mb-1">🌬️ Wind: ${weather.windspeed} km/h</p>
+        <small class="text-muted">🕒 ${weather.time}</small>
+      </div>
+    `;
+
+  } catch (error) {
+    weatherDiv.innerHTML = `<span class="text-danger">⚠️ Error fetching weather</span>`;
+  } finally {
+    loader.classList.add("d-none");
+  }
 }
