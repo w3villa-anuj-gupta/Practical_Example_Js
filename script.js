@@ -9,6 +9,11 @@ const arrOut = document.getElementById("arrOut");
 const strOut = document.getElementById("strOut");
 const objOut = document.getElementById("objOut");
 const errOut = document.getElementById("errOut");
+const alertBtn = document.getElementById('alertBtn');
+const formPrevent = document.getElementById('formPrevent');
+const eventDelegation = document.getElementById('eventDelegation');
+const asyncOut = document.getElementById('asyncOut');
+const es6Out = document.getElementById('es6Out');
 
 // Use in the Document Object Model 
 
@@ -48,6 +53,10 @@ function givesType(userInput) {
     }
     return result;
 }
+
+
+
+
 
 
 // 1. Intro
@@ -317,7 +326,11 @@ function errorDemo() {
 
 // 11. Document object Model 
 
-//  Events
+//  Events in Javascript
+
+alertBtn.addEventListener('click',(e) => {
+    alert(`Type of Event : ${e.type} \n Target : ${e.target}`);
+});
 
 function mOver(obj) {
   obj.innerHTML = "Thank You";
@@ -331,13 +344,27 @@ function mOut(obj) {
 
 function mDown(obj) {
   obj.style.backgroundColor = "#1ec5e5";
-  obj.innerHTML = "Release Me";
+  obj.innerHTML = "Mouse Down ";
 }
 
 function mUp(obj) {
   obj.style.backgroundColor="#D94A38";
-  obj.innerHTML="Thank You";
+  obj.innerHTML="Mouse Up";
 }
+
+// Form that Prevent Submission
+formPrevent.addEventListener('submit',(e) => {
+    e.preventDefault();
+    alert(`Form Submission prevented, form values: ${new FormData(e.target).get('name')}`);
+});
+
+
+// Event Delegation : which Item is clicked 
+
+eventDelegation.addEventListener('click',(e) => {
+    const click_li = e.target.closest('li');
+    alert(`${click_li.textContent} is clicked in that Table`)
+});
 
 // Game Rock Paper Scissors
 
@@ -396,7 +423,71 @@ document.getElementById("reset-score").addEventListener("click", () => {
 });
 
 
-// 12 . API 
+// 12 . Asynchronous Javascript
+
+function messageAfter2 () {
+    setTimeout( () => {
+        asyncOut.innerText = "Asynchronous Javascript : Giving message after 2 second ";
+    },2000)
+};
+
+// Create Promise Object and reject and resolve based o the arg
+
+function createPromise (arg) {
+    return new Promise( (resolve,reject) => {
+        if (arg) {
+            setTimeout( () => {
+                resolve('success');
+            },1000);
+        } else {
+            reject('fail');
+        }
+    });
+}
+
+function promiseResolve1 () {
+    let arg = confirm("Promise Resolve (Ok) and reject (Cancel)");
+    createPromise(arg)
+    .then( (res) => {
+        asyncOut.innerText = `Asynchronous Javascript : Resolve Promise after 1 sec \n Result : ${res} `;
+    })
+    .catch( (res) => {
+        asyncOut.innerText = `Asynchronous Javascript : Reject Promise after 1 sec \n Result : ${res} `;
+    })
+};
+
+
+// 13. ES6
+
+
+// Destruturing the Object 
+ 
+es6Out.innerText = JSON.stringify(student);
+
+function desObject () {
+    let {name,age} = student;
+    es6Out.innerText = `Name : ${name} \n Age : ${age}`;
+}
+
+//  Use Spread to Merge two Arrays 
+
+function mergeArray () {
+    let firstInput = prompt("Enter values separated by commas ", "1,2,3,4");
+    let secondInput = prompt("Enter values separated by commas ", "5,6,7,8");
+
+     // Convert input string into an array
+    let firstArray = firstInput.split(",").map(num => num.trim());
+    let secondArray = secondInput.split(",").map(num => num.trim());
+    
+    let new_array = [...firstArray, ...secondArray];
+
+    console.log(new_array);
+    
+    es6Out.innerText = ` First Array : ${firstInput} \n Second Array : ${secondInput} \n Merged Array : ${new_array}`;
+}
+
+
+// 14 . API 
 
 // Generate the Random Dog Image 
 

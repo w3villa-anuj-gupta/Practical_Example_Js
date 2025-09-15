@@ -32,6 +32,8 @@
           <li class="nav-item"><a class="nav-link" href="#objects">Objects</a></li>
           <li class="nav-item"><a class="nav-link" href="#errors">Errors</a></li>
           <li class="nav-item"><a class="nav-link" href="#dom">DOM</a></li>
+          <li class="nav-item"><a class="nav-link" href="#asynchronous">Asynchronous</a></li>
+          <li class="nav-item"><a class="nav-link" href="#es6">ES6</a></li>
           <li class="nav-item"><a class="nav-link" href="#api">API</a></li>
         </ul>
       </div>
@@ -194,11 +196,26 @@
     <div id="dom" class="card mb-4">
       <div class="card-body">
         <h2 class="card-title h4 mb-3">11. Document Object Model</h2>
+        <hr>
+        <h3 class="h4 mb-2">Events in JavaScript</h3>
         <br>
-        <h3 class="h6 mb-2">Events</h3>
-        <br>
+        <button class="btn btn-success" id="alertBtn">Alert</button>
         <button class="btn btn-success" onmouseover="mOver(this)" onmouseout="mOut(this)">Mouse Over Me</button>
-        <button class="btn btn-secondary" onmousedown="mDown(this)" onmouseup="mUp(this)">Click Me</button>
+        <button class="btn btn-secondary" onmousedown="mDown(this)" onmouseup="mUp(this)">Mouse Down Up</button>
+        <br><br>
+        <h6>Form that Prevent Submission</h6>
+        <br>
+        <form id="formPrevent">
+          <input name="name" placeholder="name">
+          <button type="submit">Submit</button>
+        </form>
+        <br>
+        <h6>Event Delegation : which Item is clicked </h6>
+        <ul id="eventDelegation">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
         <hr>
         <!-- Game  -->
         <div class="container text-center mt-5">
@@ -220,11 +237,33 @@
       </div>
     </div>
 
-    <!-- 12. API  -->
+    <!-- 12. Synchronous JavaScript -->
+     <div id="asynchronous" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">12. Asynchronous JavaScript</h2>
+        <button class="btn btn-success" onclick="messageAfter2()">Message(after 2 sec)</button>
+        <button class="btn btn-success" onclick="promiseResolve1()">Promise Resolve Reject</button>
+        <div class="output" id="asyncOut"></div>
+      </div>
+     </div>
+
+
+    <!-- 13. ES6 -->
+
+     <div id="es6" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">13. ES6</h2>
+        <button class="btn btn-success" onclick="desObject()">Destructuring Object</button>
+        <button class="btn btn-success" onclick="mergeArray()">Spread (Merge Array)</button>
+        <div class="output" id="es6Out"></div>
+      </div>
+     </div>
+
+    <!-- 14. API  -->
     <div id="api" class="card mb-4">
       <div class="card-body">
 
-        <h2 class="card-title h4 mb-3">12. API</h2>
+        <h2 class="card-title h4 mb-3">14. API</h2>
         <div class="text-center">
           <h3 class="h5 mb-2">Random Dog API</h3>
           <br>
@@ -247,7 +286,7 @@
           <div id="errOut" class="text-danger mt-2"></div>
           <br>
           <hr>
-          
+
           <!-- Weather of the City -->
 
           <br><br>
