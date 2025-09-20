@@ -34,6 +34,8 @@
           <li class="nav-item"><a class="nav-link" href="#dom">DOM</a></li>
           <li class="nav-item"><a class="nav-link" href="#asynchronous">Asynchronous</a></li>
           <li class="nav-item"><a class="nav-link" href="#es6">ES6</a></li>
+          <li class="nav-item"><a class="nav-link" href="#frameworks">Frameworks</a></li>
+          <li class="nav-item"><a class="nav-link" href="#project">Project</a></li>
           <li class="nav-item"><a class="nav-link" href="#api">API</a></li>
         </ul>
       </div>
@@ -238,32 +240,124 @@
     </div>
 
     <!-- 12. Synchronous JavaScript -->
-     <div id="asynchronous" class="card mb-4">
+    <div id="asynchronous" class="card mb-4">
       <div class="card-body">
         <h2 class="card-title h4 mb-3">12. Asynchronous JavaScript</h2>
         <button class="btn btn-success" onclick="messageAfter2()">Message(after 2 sec)</button>
         <button class="btn btn-success" onclick="promiseResolve1()">Promise Resolve Reject</button>
         <div class="output" id="asyncOut"></div>
       </div>
-     </div>
+    </div>
 
 
     <!-- 13. ES6 -->
 
-     <div id="es6" class="card mb-4">
+    <div id="es6" class="card mb-4">
       <div class="card-body">
         <h2 class="card-title h4 mb-3">13. ES6</h2>
         <button class="btn btn-success" onclick="desObject()">Destructuring Object</button>
         <button class="btn btn-success" onclick="mergeArray()">Spread (Merge Array)</button>
         <div class="output" id="es6Out"></div>
       </div>
-     </div>
+    </div>
 
-    <!-- 14. API  -->
+
+
+    <!-- 14. Javascript Framework and use cases -->
+    <div id="frameworks" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">14. Javascript Framework and Use Cases</h2>
+        <br>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="color: aqua;">React.js</h5>
+              <p class="card-text">React is a library for building user interfaces, particularly single-page
+                applications (SPAs) where a dynamic and interactive user experience is crucial. It is widely used for
+                developing complex front-end applications, including social media platforms, e-commerce sites, and
+                interactive dashboards. Its component-based architecture facilitates reusable UI elements, and with
+                React Native, it extends to mobile application development.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="color: green;">Node.js</h5>
+              <p class="card-text">Node.js is not a JavaScript framework but a cross-platform, open-source JavaScript
+                runtime environment. It allows developers to execute JavaScript code outside of a web browser, typically
+                on a server. Node.js is built on Google's V8 JavaScript engine, the same engine that powers the Chrome
+                browser.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="color: red;">Angular</h5>
+              <p class="card-text">Angular is a comprehensive, opinionated framework ideal for building large-scale,
+                enterprise-level applications. It provides a structured approach to development, making it suitable for
+                projects requiring a robust and maintainable codebase. Common use cases include complex business
+                applications, internal tools, and applications with extensive data management and forms. Its strong
+                support for TypeScript and a full-fledged ecosystem make it a preferred choice for large teams and
+                long-term projects.</p>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+
+    <!-- 15. Mini Project -->
+
+    <div id="project" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title h4 mb-3">15. Mini Project</h2>
+        <div class="output" id="miniProjectOut"></div>
+        <br>
+        <div class="row ">
+          <div class="col-md-12">
+            <div class="card shadow-lg rounded-4">
+              <div class="card-body p-4">
+                <!-- Display -->
+
+                <!-- Calculator Buttons -->
+                <div class="row g-2" id="calculator">
+                  <div class="col-3"><button class="btn btn-dark w-100 py-3">7</button></div>
+                  <div class="col-3"><button class="btn btn-dark w-100 py-3">8</button></div>
+                  <div class="col-3"><button class="btn btn-dark w-100 py-3">9</button></div>
+                  <div class="col-3"><button class="btn btn-info w-100 py-3">+</button></div>
+
+                  <div class="col-3"><button class="btn btn-dark w-100 py-3">4</button></div>
+                  <div class="col-3"><button class="btn btn-dark w-100 py-3">5</button></div>
+                  <div class="col-3"><button class="btn btn-dark w-100 py-3">6</button></div>
+                  <div class="col-3"><button class="btn btn-info w-100 py-3">-</button></div>
+
+                  <div class="col-3"><button class="btn btn-dark w-100 py-3">1</button></div>
+                  <div class="col-3"><button class="btn btn-dark w-100 py-3">2</button></div>
+                  <div class="col-3"><button class="btn btn-dark w-100 py-3">3</button></div>
+                  <div class="col-3"><button class="btn btn-info w-100 py-3">/</button></div>
+
+                  <div class="col-3"><button class="btn btn-secondary w-100 py-3">00</button></div>
+                  <div class="col-3"><button class="btn btn-secondary w-100 py-3">0</button></div>
+                  <div class="col-3"><button class="btn btn-secondary w-100 py-3">.</button></div>
+                  <div class="col-3"><button class="btn btn-info w-100 py-3">*</button></div>
+
+                  <div class="col-3"><button class="btn btn-danger w-100 py-3">AC</button></div>
+                  <div class="col-3"><button class="btn btn-info w-100 py-3">%</button></div>
+                  <div class="col-6"><button class="btn btn-danger w-100 py-3">=</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+
+    <!-- 16. API  -->
     <div id="api" class="card mb-4">
       <div class="card-body">
 
-        <h2 class="card-title h4 mb-3">14. API</h2>
+        <h2 class="card-title h4 mb-3">16. API</h2>
         <div class="text-center">
           <h3 class="h5 mb-2">Random Dog API</h3>
           <br>
@@ -310,12 +404,9 @@
         </div>
       </div>
     </div>
-
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 
 </body>
 

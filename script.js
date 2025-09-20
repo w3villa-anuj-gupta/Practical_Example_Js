@@ -14,6 +14,8 @@ const formPrevent = document.getElementById('formPrevent');
 const eventDelegation = document.getElementById('eventDelegation');
 const asyncOut = document.getElementById('asyncOut');
 const es6Out = document.getElementById('es6Out');
+const miniProjectOut = document.getElementById('miniProjectOut');
+const calculator = document.getElementById('calculator');
 
 // Use in the Document Object Model 
 
@@ -487,7 +489,27 @@ function mergeArray () {
 }
 
 
-// 14 . API 
+// 15. Mini Project
+
+let lastEntry = ""
+
+calculator.addEventListener("click" ,(e) => {
+    const click_li = e.target.closest('button');
+    
+    if (click_li.textContent === "=") {
+        let result = eval(miniProjectOut.textContent);
+        miniProjectOut.innerText += ` =  ${result}`;
+    } else if (click_li.textContent === "AC") {
+        miniProjectOut.innerText = ""
+    } else {
+        lastEntry = click_li.textContent;
+        miniProjectOut.innerText += `${click_li.textContent}`;
+    }
+    
+})
+
+
+// 16 . API 
 
 // Generate the Random Dog Image 
 
